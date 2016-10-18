@@ -145,6 +145,10 @@ import com.sudoplay.joise.module.ModuleBasisFunction.BasisType;
 import com.sudoplay.joise.module.ModuleBasisFunction.InterpolationType;
 import com.sudoplay.joise.module.ModuleFractal;
 import com.sudoplay.joise.module.ModuleFractal.FractalType;
+import org.atmosphere.nettosphere.Config;
+import org.atmosphere.nettosphere.Nettosphere;
+import org.dyn4j.dynamics.Body;
+import org.dyn4j.dynamics.World;
 
 public class Main {
     public static void main(String[] args) {
@@ -181,6 +185,21 @@ public class Main {
 //        System.out.println(maxp);
 //        System.out.println(minp);
 
-
+        World world = new World();
+        Body player = new Body();
+        world.addBody(player);
+        player.setAngularVelocity(Math.toRadians(-20.0));
+        for (int i = 0; i < 100; i++) {
+            world.update(100);
+            System.out.println(player.getAngularVelocity());
+        }
+        Config.Builder b = new Config.Builder();
+        b.resource(GameService.class)
+//            .resource("./webapps")
+            .port(8080)
+            .host("127.0.0.1")
+            .build();
+        Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
+        s.start();
     }
 }

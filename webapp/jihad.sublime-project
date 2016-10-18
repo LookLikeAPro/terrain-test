@@ -1,0 +1,29 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns":
+			[
+				".svn",
+				".git",
+				".hg",
+				"CVS",
+				".idea",
+				"__pycache__",
+				"node_modules"
+			]
+		}
+	],
+	"settings": {
+	},
+	"build_systems":
+	[
+		{
+			"name": "Webpack",
+			"working_dir": "${project_path:${folder:${file_path}}}",
+			"cmd": ["npm", "run", "dev"],
+			"osx": {"path": "/usr/local/bin:./node_modules:$PATH"}
+		}
+	]
+}
