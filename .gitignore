@@ -1,3 +1,7 @@
 .gradle/
 .idea/
 build/
+webapp/node_modules/
+webapp/dist/
+.vscode/
+.DS_Store
